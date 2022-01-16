@@ -8,11 +8,10 @@ import ru.issuemanager.config.AuthenticationBean;
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping("/api/v1")
 public class AuthController {
 
-    @GetMapping(path = "/basicauth")
-    public AuthenticationBean basicauth() {
-        return new AuthenticationBean("You are authenticated");
+    @GetMapping(path = "/login")
+    public String login() {
+        return "You are log in!";
     }
 }

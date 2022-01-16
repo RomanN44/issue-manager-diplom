@@ -1,5 +1,9 @@
 spring:
   security:
     user:
-      name: admin
-      password: admin
+      name: jadmin
+      password: jadmin
+  datasource:
+    url: 'jdbc:postgresql://localhost:5432/issue-manager'
+    username: 'postgres'
+    password: '0000'
