@@ -10,7 +10,8 @@ import ru.issuemanager.config.AuthenticationBean;
 @RestController
 public class AuthController {
 
-    @GetMapping(path = "/login")
+    @CrossOrigin
+    @GetMapping(path = "/auth")
     public String login() {
         return "You are log in!";
     }
