@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.issuemanager.config.AuthenticationBean;
 
-//@CrossOrigin(origins = "http://localhost:4200")
+
 @RestController
+@CrossOrigin(origins = "*")
 public class AuthController {
 
-    @CrossOrigin
     @GetMapping(path = "/auth")
     public String login() {
         return "You are log in!";
     }
+
 }
