@@ -2,7 +2,6 @@ package ru.issuemanager.service
 
 import org.springframework.stereotype.Service
 import ru.issuemanager.dao.IssueDao
-import ru.issuemanager.domain.Issue
 import ru.issuemanager.dto.AssignIssueRequest
 import ru.issuemanager.dto.ChangeIssueStatusRequest
 import ru.issuemanager.dto.CreateIssueRequest
