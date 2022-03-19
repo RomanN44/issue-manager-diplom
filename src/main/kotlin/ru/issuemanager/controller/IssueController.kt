@@ -9,7 +9,7 @@ import ru.issuemanager.service.IssueService
 @RestController
 @CrossOrigin(origins = ["*"])
 class IssueController(
-    val issueService: IssueService
+    private val issueService: IssueService
 ) {
     @GetMapping("/issue/get/byUser/{userId}")
     fun getIssuesByUser(@PathVariable userId: Long) = try {

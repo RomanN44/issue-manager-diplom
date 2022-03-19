@@ -34,7 +34,7 @@ class IssueDao(
     }
 
     fun insertIssue(request: CreateIssueRequest) = try {
-        val sql = "insert into public.issues(" +
+        val sql = "insert into issues(" +
                 " member_id, title, description, status, date_start, date_finish, group_id)" +
                 " values (null, '${request.title}'," +
                 " '${request.description}', 'ToDo', now(), null, ${request.groupId});"
