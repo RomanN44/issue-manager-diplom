@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  id: Object = 0
   username: string = "";
   password: string = "";
   message: any
@@ -20,9 +21,9 @@ export class LoginComponent implements OnInit {
 
   doLogin() {
     let resp = this.service.login(this.username, this.password);
-    resp.subscribe(data => {
-      this.message = data;
-     this.router.navigate(["/home"])
+    resp.subscribe(res => {
+      localStorage.setItem('id', String(res));
+      this.router.navigate(["/home"])
     });
   }
 }
