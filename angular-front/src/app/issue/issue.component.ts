@@ -19,7 +19,6 @@ export class IssueComponent implements OnInit {
   }
 
   getIssues() {
-
     this.restapi.get('/issue/get/byUser/' + localStorage.getItem('id'))
       .subscribe((data: any) => {
         this.allIssues = []

@@ -1,0 +1,12 @@
+.card {
+  border-bottom: 2px solid #6678b1;
+  border-top: 2px solid #6678b1;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 15%;
+  text-align: left;
+  margin: 45px;
+  margin-inside: 10px;
+  color: #669;
+}

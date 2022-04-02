@@ -1,8 +1,11 @@
 package ru.issuemanager.dao
 
+import mu.KotlinLogging
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import ru.issuemanager.dto.CreateGroupRequest
+
+private val logger = KotlinLogging.logger {}
 
 @Repository
 class GroupDao(
@@ -23,6 +26,7 @@ class GroupDao(
                 " values ( ($selectIdNewGroup), '${request.userId}');"
         jdbcTemplate.execute(insertAdmin)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
@@ -31,6 +35,7 @@ class GroupDao(
                 " where group_id = $id"
         jdbcTemplate.execute(sql)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
@@ -39,15 +44,18 @@ class GroupDao(
                 " where group_id = $id"
         jdbcTemplate.queryForList(sql)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
     fun selectGroupsByMember(id: Long) = try {
         val sql = "select group_id, user_id, title, description" +
-                " from pgroups " +
+                " from groups " +
                 " where group_id in (select group_id from members where user_id = $id)"
-        jdbcTemplate.queryForList(sql)
+        val res = jdbcTemplate.queryForList(sql)
+        res
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 }

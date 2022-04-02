@@ -1,2 +1,17 @@
-<app-navigation></app-navigation>
-<p>group works!</p>
+<div class="p-container">
+  <app-navigation></app-navigation>
+  <div>
+    <table>
+      <tr>
+        <th>ID группы</th>
+        <th>Заголовок</th>
+        <th>Описание</th>
+      </tr>
+      <tr *ngFor="let group of allGroups">
+        <td>{{group.group_id}}</td>
+        <td>{{group.title}}</td>
+        <td>{{group.description}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
