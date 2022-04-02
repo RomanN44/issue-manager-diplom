@@ -8,12 +8,18 @@ import { HomeComponent } from './home/home.component';
 import { RestapiService } from './restapi.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NavigationComponent } from './navigation/navigation.component';
+import { IssueComponent } from './issue/issue.component';
+import { GroupComponent } from './group/group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    NavigationComponent,
+    IssueComponent,
+    GroupComponent
   ],
   imports: [
     BrowserModule,

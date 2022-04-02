@@ -1,0 +1,26 @@
+<div class="p-container">
+  <app-navigation></app-navigation>
+  <div>
+    <table>
+      <tr>
+        <th>ID задачи</th>
+        <th>Заголовок</th>
+        <th>Описание</th>
+        <th>Статус</th>
+        <th>Дата начала</th>
+        <th>Дата конца</th>
+        <th>ID группы</th>
+      </tr>
+      <tr *ngFor="let issue of allIssues">
+        <td>{{issue.issue_id}}</td>
+        <td>{{issue.title}}</td>
+        <td>{{issue.description}}</td>
+        <td>{{issue.status}}</td>
+        <td>{{issue.date_start}}</td>
+        <td>{{issue.date_finish}}</td>
+        <td>{{issue.group_id}}</td>
+      </tr>
+    </table>
+  </div>
+
+</div>

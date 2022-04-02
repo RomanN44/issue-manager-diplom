@@ -48,7 +48,7 @@ class UserDao(
     fun selectIdByName(name: String) = try {
         val sql = "select user_id " +
                 " from users " +
-                " where username like $name "
+                " where username like '$name' "
         jdbcTemplate.queryForObject(sql, Long::class.java)
     } catch (e: Exception) {
         null
