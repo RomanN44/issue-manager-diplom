@@ -22,3 +22,7 @@ td {
 tr:hover td {
   color: #6699ff;
 }
+.h-style {
+  text-align-last: center;
+  color: #669;
+}

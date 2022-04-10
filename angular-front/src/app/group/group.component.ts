@@ -28,4 +28,11 @@ export class GroupComponent implements OnInit {
       )
   }
 
+  isAdmin(group: Group) {
+    if(group.user_id.toString() == localStorage.getItem('id')) {
+      return "Вы администратор"
+    } else {
+      return ""
+    }
+  }
 }

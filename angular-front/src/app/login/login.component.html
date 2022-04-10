@@ -1,18 +1,25 @@
-<div class="background-wrap">
-    <div class="background"></div>
-  </div>
- 
-  <form id="accesspanel" action="">
-    <h1 id="litheader">Java Techie</h1>
-    <div class="inset">
-      <p>
-        <input type="text" name="username" [(ngModel)]="username" id="email" placeholder="username">
-      </p>
-      <p>
-        <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="password">
-      </p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<title>Панель авторизации</title>
+<div class="container-login">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Авторизация</h3>
     </div>
-    <p class="p-container">
-      <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()">
-    </p>
-  </form>
+    <div class="panel-body">
+      <form accept-charset="UTF-8" role="form">
+        <fieldset>
+          <div class="form-group">
+            <input class="form-control" placeholder="Логин" name="username" type="text" [(ngModel)]="username">
+          </div>
+          <div class="form-group">
+            <input class="form-control" placeholder="Пароль" name="password" type="password" value=""
+                   [(ngModel)]="password">
+          </div>
+          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Войти" (click)="doLogin()">
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<head>
-    <title>Home page</title>
-</head>
-<body>
+<title>Главная страница</title>
 <app-navigation></app-navigation>
-    <div class="container card">
-      <p>ID - {{info.userId}}</p>
-      <p>Login - {{info.username}}</p>
-      <p>Email - {{showIfNull(info.email)}}</p>
-      <p>Полное имя - {{showIfNull(info.fullName)}}</p>
-    </div>
-</body>
+<div class="container card">
+  <p>ID - {{info.userId}}</p>
+  <p>Login - {{info.username}}</p>
+  <p>Email - {{info.email}}</p>
+  <p>Полное имя - {{info.fullName}}</p>
+</div>

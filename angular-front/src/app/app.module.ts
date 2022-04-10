@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { IssueComponent } from './issue/issue.component';
 import { GroupComponent } from './group/group.component';
+import { AdminComponent } from './admin/admin.component';
+import { ManageGroupComponent } from './manage-group/manage-group.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { GroupComponent } from './group/group.component';
     HomeComponent,
     NavigationComponent,
     IssueComponent,
-    GroupComponent
+    GroupComponent,
+    AdminComponent,
+    ManageGroupComponent
   ],
   imports: [
     BrowserModule,

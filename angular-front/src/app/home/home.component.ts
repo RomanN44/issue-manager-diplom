@@ -32,15 +32,4 @@ export class HomeComponent implements OnInit {
       this.info.fullName = res.fullName
     })
   }
-
-  showIfNull(field: string | null) {
-    if(field === null) {
-      return "Неизвестно"
-    } else {
-      return field
-    }
-  }
-
-
-
 }

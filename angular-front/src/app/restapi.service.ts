@@ -24,9 +24,20 @@ export class RestapiService {
   }
 
   get(endpoint: string) {
-    const headers = new HttpHeaders({Authorization: 'Basic ' + btoa(
-      localStorage.getItem('username') + ':' + localStorage.getItem('password'))}
+    const headers = new HttpHeaders({
+        Authorization: 'Basic ' + btoa(
+          localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+      }
     );
     return this.http.get("http://localhost:8080" + endpoint, {headers, responseType: 'text' as 'json'})
+  }
+
+  post(endpoint: string, request: any) {
+    const headers = new HttpHeaders({
+        Authorization: 'Basic ' + btoa(
+          localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+      }
+    );
+    return this.http.post("http://localhost:8080" + endpoint, request,{headers, responseType: 'text' as 'json'})
   }
 }

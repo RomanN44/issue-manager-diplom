@@ -1,0 +1,77 @@
+.card {
+  border-bottom: 2px solid #6678b1;
+  border-top: 2px solid #6678b1;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 30%;
+  text-align: left;
+  margin: 45px;
+  margin-inside: 10px;
+  color: #669;
+}
+table {
+  margin:auto;
+  width:120%;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 70%;
+  border-collapse: collapse;
+  text-align: left;
+}
+th {
+  font-weight: normal;
+  color: #039;
+  border-bottom: 2px solid #6678b1;
+  padding: 10px 8px;
+}
+td {
+  color: #669;
+  padding: 9px 8px;
+  transition: .3s linear;
+}
+tr:hover td {
+  color: #6699ff;
+}
+.my-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.h-style {
+  text-align-last: center;
+  color: #669;
+}
+.my-input{
+  margin: 5px;
+}
+.btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+.btn-danger  {
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+

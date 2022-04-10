@@ -3,7 +3,10 @@ package ru.issuemanager.dao
 import mu.KotlinLogging
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
+import ru.issuemanager.domain.Group
+import ru.issuemanager.domain.User
 import ru.issuemanager.dto.CreateGroupRequest
+import java.sql.ResultSet
 
 private val logger = KotlinLogging.logger {}
 
@@ -42,7 +45,12 @@ class GroupDao(
     fun selectFromGroup(id: Long) = try {
         val sql = "select * from groups " +
                 " where group_id = $id"
-        jdbcTemplate.queryForList(sql)
+        jdbcTemplate.queryForObject(sql) { rs: ResultSet, _: Int ->
+            Group(rs.getLong("group_id"),
+                rs.getLong("user_id"),
+                rs.getString("title"),
+                rs.getString("description"))
+        }
     } catch (e: Exception) {
         logger.error { e.message }
         null

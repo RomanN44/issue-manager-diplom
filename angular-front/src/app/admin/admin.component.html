@@ -1,8 +1,8 @@
-<title>Панель групп пользователя</title>
+<title>Панель администратора групп</title>
 <div class="p-container">
   <app-navigation></app-navigation>
   <div>
-    <h2 class="h-style">Мои группы</h2>
+    <h2 class="h-style">Администрируемые группы</h2>
     <table>
       <tr>
         <th>ID группы</th>
@@ -14,7 +14,7 @@
         <td>{{group.group_id}}</td>
         <td>{{group.title}}</td>
         <td>{{group.description}}</td>
-        <td>{{isAdmin(group)}}</td>
+        <td><button (click)="getManage(group)">Администрирование</button></td>
       </tr>
     </table>
   </div>

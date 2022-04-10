@@ -1,0 +1,33 @@
+<title>Управление группой</title>
+<app-navigation></app-navigation>
+<div class="card">
+  <p>ID - {{group?.group_id}}</p>
+  <p>Назание - {{group?.title}}</p>
+  <p>Описание - {{group?.description}}</p>
+  <button class = "btn btn-danger my-btn" name="deleteGroup" (click)="deleteGroup()">Удалить группу</button>
+</div>
+<div class="card">
+  <h4 class="h-style">Добавить пользователя в группу</h4>
+  <form>
+    <label>Введите ID нового участника </label>
+    <input class="my-input" type="text" name="memberId" [(ngModel)]="newMemberRequest.userId">
+    <button name="member" class="btn btn-success" (click)="addMember()">Добавить</button>
+  </form>
+</div>
+<h2 class="h-style">Участники группы</h2>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Login</th>
+    <th>Email</th>
+    <th>Полное имя</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let user of allMembers">
+    <td>{{user.user_id}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.full_name}}</td>
+    <td><button class="btn btn-danger" name="deleteMember" (click)="deleteMember(user.user_id)">Исключить</button></td>
+  </tr>
+</table>
