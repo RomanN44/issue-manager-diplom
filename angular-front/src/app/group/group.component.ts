@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Group} from "../dto/Group";
 import {RestapiService} from "../restapi.service";
 
@@ -36,7 +36,7 @@ export class GroupComponent implements OnInit {
   }
 
   isAdmin(group: Group) {
-    if(group.user_id.toString() == localStorage.getItem('id')) {
+    if (group.user_id.toString() == localStorage.getItem('id')) {
       return "Вы администратор"
     } else {
       return ""
@@ -44,10 +44,11 @@ export class GroupComponent implements OnInit {
   }
 
   createGroup() {
-    if (this.createGroupRequest.title !== null)
+    if (this.createGroupRequest.title !== null) {
       this.restapi.post('/group/createGroup', this.createGroupRequest)
         .subscribe((data: any) => {
           this.getGroups()
         })
     }
+  }
 }

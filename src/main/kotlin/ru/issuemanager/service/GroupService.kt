@@ -64,5 +64,4 @@ class GroupService(
         logger.error { e.message }
         null
     }
-
 }

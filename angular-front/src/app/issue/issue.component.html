@@ -11,7 +11,8 @@
         <th>Статус</th>
         <th>Дата начала</th>
         <th>Дата конца</th>
-        <th>ID группы</th>
+        <th>Группа</th>
+        <th></th>
       </tr>
       <tr *ngFor="let issue of allIssues">
         <td>{{issue.issue_id}}</td>
@@ -20,7 +21,9 @@
         <td>{{issue.status}}</td>
         <td>{{issue.date_start}}</td>
         <td>{{issue.date_finish}}</td>
-        <td>{{issue.group_id}}</td>
+        <td>{{issue.grouptitle}}</td>
+        <td><button class = "btn btn-primary" (click)="changeStatus(issue)"
+                    [disabled]="(issue.status == 'Done')">Изменить статус</button></td>
       </tr>
     </table>
   </div>

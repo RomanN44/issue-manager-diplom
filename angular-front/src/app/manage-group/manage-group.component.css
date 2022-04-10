@@ -16,9 +16,12 @@ table {
   height:100%;
   font-size: 16px;
   background: white;
-  max-width: 70%;
+  max-width: 95%;
   border-collapse: collapse;
   text-align: left;
+}
+.table-member {
+  max-width: 70%;
 }
 th {
   font-weight: normal;
@@ -73,5 +76,9 @@ tr:hover td {
   border-color: #5cb85c;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+.main-border {
+  border-top: 2px solid #304fad;
+  max-width: 100%;
 }
 

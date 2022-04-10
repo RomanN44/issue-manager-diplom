@@ -21,10 +21,25 @@ export class IssueComponent implements OnInit {
   getIssues() {
     this.restapi.get('/issue/get/byUser/' + localStorage.getItem('id'))
       .subscribe((data: any) => {
-        this.allIssues = []
+          this.allIssues = []
           let res = JSON.parse(data)
           res.forEach((issue: Issue) => this.allIssues.push(issue))
         }
       )
+  }
+
+  changeStatus(issue: Issue) {
+    let newStatus: string = issue.status
+    switch (issue.status) {
+      case 'ToDo': newStatus = 'InProgress'; break
+      case 'InProgress': newStatus = 'InTest'; break
+      case 'InTest': newStatus = 'Done'; break
+    }
+    console.log(newStatus)
+    console.log(issue.status)
+    this.restapi.post('/issue/changeStatus', {issueId: issue.issue_id, status: newStatus})
+      .subscribe((data: any) => {
+          this.getIssues()
+        })
   }
 }

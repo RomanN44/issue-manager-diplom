@@ -34,9 +34,12 @@ class GroupDao(
     }
 
     fun deleteFromGroup(id: Long) = try {
-        val sql = "delete from groups " +
+        val sqlDeleteMembers = "delete from members " +
                 " where group_id = $id"
-        jdbcTemplate.execute(sql)
+        val sqlDeleteGroup = "delete from groups " +
+                " where group_id = $id"
+        jdbcTemplate.execute(sqlDeleteMembers)
+        jdbcTemplate.execute(sqlDeleteGroup)
     } catch (e: Exception) {
         logger.error { e.message }
         null
@@ -60,8 +63,7 @@ class GroupDao(
         val sql = "select group_id, user_id, title, description" +
                 " from groups " +
                 " where group_id in (select group_id from members where user_id = $id)"
-        val res = jdbcTemplate.queryForList(sql)
-        res
+        jdbcTemplate.queryForList(sql)
     } catch (e: Exception) {
         logger.error { e.message }
         null

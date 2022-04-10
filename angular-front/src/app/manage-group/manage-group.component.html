@@ -4,30 +4,88 @@
   <p>ID - {{group?.group_id}}</p>
   <p>Назание - {{group?.title}}</p>
   <p>Описание - {{group?.description}}</p>
-  <button class = "btn btn-danger my-btn" name="deleteGroup" (click)="deleteGroup()">Удалить группу</button>
+  <button class="btn btn-danger my-btn" name="deleteGroup" (click)="deleteGroup()">Удалить группу</button>
 </div>
 <div class="card">
   <h4 class="h-style">Добавить пользователя в группу</h4>
   <form>
-    <label>Введите ID нового участника </label>
+    <label>Введите ID нового участника: </label>
     <input class="my-input" type="text" name="memberId" [(ngModel)]="newMemberRequest.userId">
+    <br>
     <button name="member" class="btn btn-success" (click)="addMember()">Добавить</button>
   </form>
 </div>
-<h2 class="h-style">Участники группы</h2>
-<table>
-  <tr>
-    <th>ID</th>
-    <th>Login</th>
-    <th>Email</th>
-    <th>Полное имя</th>
-    <th></th>
-  </tr>
-  <tr *ngFor="let user of allMembers">
-    <td>{{user.user_id}}</td>
-    <td>{{user.username}}</td>
-    <td>{{user.email}}</td>
-    <td>{{user.full_name}}</td>
-    <td><button class="btn btn-danger" name="deleteMember" (click)="deleteMember(user.user_id)">Исключить</button></td>
-  </tr>
-</table>
+<div>
+  <h2 class="h-style">Участники группы</h2>
+  <table class="table-member">
+    <tr>
+      <th>ID</th>
+      <th>Логин</th>
+      <th>Email</th>
+      <th>Полное имя</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let user of allMembers">
+      <td>{{user.user_id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.full_name}}</td>
+      <td>
+        <button class="btn btn-danger" name="deleteMember" (click)="deleteMember(user.user_id)">Исключить</button>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="main-border"></div>
+<div>
+  <div class="card">
+    <h4 class="h-style">Создать задачу</h4>
+    <form>
+      <label>Введите заголовок задачи: </label>
+      <input class="my-input" type="text" name="title" [(ngModel)]="createIssueRequest.title">
+      <br>
+      <label>Введите описание задачи: </label>
+      <textarea class="my-input" rows="10" cols="45" name="description" [(ngModel)] = "createIssueRequest.description"></textarea>
+      <br>
+      <button name="member" class="btn btn-success" (click)="createIssue()">Создать</button>
+    </form>
+  </div>
+</div>
+<div class="card">
+  <h4 class="h-style">Назначить задачу</h4>
+  <form>
+    <label>Введите ID выполнителя: </label>
+    <input class="my-input" type="text" name="memberId" [(ngModel)]="assignIssueRequest.userId">
+    <br>
+    <label>Введите ID задачи: </label>
+    <input class="my-input" type="text" name="issueId" [(ngModel)]="assignIssueRequest.issueId">
+    <br>
+    <button name="member" class="btn btn-success" (click)="assignIssue()">Назначить</button>
+  </form>
+</div>
+<div>
+  <h2 class="h-style">Задачи группы</h2>
+  <table>
+    <tr>
+      <th>ID задачи</th>
+      <th>Заголовок</th>
+      <th>Описание</th>
+      <th>Статус</th>
+      <th>Дата начала</th>
+      <th>Дата конца</th>
+      <th>Имя</th>
+      <th>Почта</th>
+    </tr>
+    <tr *ngFor="let issue of allIssues">
+      <td>{{issue.issue_id}}</td>
+      <td>{{issue.title}}</td>
+      <td>{{issue.description}}</td>
+      <td>{{issue.status}}</td>
+      <td>{{issue.date_start}}</td>
+      <td>{{issue.date_finish}}</td>
+      <td>{{checkMember(issue.full_name)}}</td>
+      <td>{{issue.email}}</td>
+    </tr>
+  </table>
+</div>
+<footer style="margin-top: 40px"></footer>

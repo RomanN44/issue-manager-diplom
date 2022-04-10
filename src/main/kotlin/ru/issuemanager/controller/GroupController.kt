@@ -10,13 +10,13 @@ import ru.issuemanager.service.GroupService
 
 private val logger = KotlinLogging.logger {}
 
+//+
 @RestController
 @CrossOrigin(origins = ["*"])
 class GroupController(
     private val groupService: GroupService
 ) {
-
-
+    //+
     @PostMapping("/group/createGroup")
     fun createGroup(@RequestBody request: CreateGroupRequest) = try {
         groupService.createGroup(request)

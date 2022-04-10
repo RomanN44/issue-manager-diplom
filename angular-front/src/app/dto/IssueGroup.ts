@@ -1,4 +1,4 @@
-export class Issue {
+export class IssueGroup {
   issue_id: number = 0
   member_id: number | null = 0
   title: string = ""
@@ -6,7 +6,8 @@ export class Issue {
   status: string = ""
   date_start: string = ""
   date_finish: string | null = ""
-  grouptitle: string = ""
+  full_name: string = ""
+  email: string = ""
 
   constructor(issue_id: number,
               member_id: number,
@@ -15,15 +16,16 @@ export class Issue {
               status: string,
               date_start: string,
               date_finish: string,
-              grouptitle: string) {
-
-      this.issue_id = issue_id
-      this.member_id = member_id
-      this.title = title
-      this.description = description
-      this.status = status
-      this.date_start = date_start
-      this.date_finish = date_finish
-      this.grouptitle = grouptitle
+              full_name: string,
+              email: string) {
+    this.issue_id = issue_id
+    this.member_id = member_id
+    this.title = title
+    this.description = description
+    this.status = status
+    this.date_start = date_start
+    this.date_finish = date_finish
+    this.full_name = full_name
+    this.email = email
   }
 }
