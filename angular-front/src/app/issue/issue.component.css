@@ -1,3 +1,15 @@
+.card {
+  border-bottom: 2px solid #6678b1;
+  border-top: 2px solid #6678b1;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 100%;
+  text-align: left;
+  margin: 45px;
+  margin-inside: 10px;
+  color: #669;
+}
 table {
   margin:auto;
   width:150%;
@@ -26,6 +38,9 @@ tr:hover td {
   text-align-last: center;
   color: #669;
 }
+.my-input{
+  margin: 15px;
+}
 .btn {
   display: inline-block;
   font-weight: normal;
@@ -42,12 +57,16 @@ tr:hover td {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 0.25rem;
+  margin-right: 20px;
 }
 .btn-primary  {
   color: #fff;
   background-color: #0275d8;
   border-color: #0275d8;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
+
 .btn-primary:disabled  {
   cursor: default;
   color: #fff;

@@ -18,10 +18,17 @@ class MemberDao(
     }
 
     fun deleteMember(groupId: Long, userId: Long) = try {
-        val sql = "delete from members " +
-                " where group_id = $groupId and user_id = $userId;"
-        jdbcTemplate.execute(sql)
+        val scriptGetMemberId = "select member_id from members" +
+                " where user_id = $userId and group_id = $groupId"
+        val memberId = jdbcTemplate.queryForObject(scriptGetMemberId, Long::class.java)
+        val returnIssues = "update issues set member_id = null, status = 'ToDo' " +
+                " where member_id = $memberId"
+        jdbcTemplate.update(returnIssues)
+        val deleteMember = "delete from members " +
+                " where group_id = $groupId and user_id = $userId"
+        jdbcTemplate.execute(deleteMember)
     } catch (e: Exception) {
         null
     }
+
 }

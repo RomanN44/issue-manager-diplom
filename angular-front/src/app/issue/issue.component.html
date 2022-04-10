@@ -2,6 +2,29 @@
 <div class="p-container">
   <app-navigation></app-navigation>
   <div>
+    <div class="card">
+      <h4 class="h-style">Фильтр задач</h4>
+      <form>
+        <label>ID: </label>
+        <input class="my-input" type="text" name="title" [(ngModel)]="filterIssue.issue_id">
+        <label>Заголовок: </label>
+        <input class="my-input" type="text" name="title" [(ngModel)]="filterIssue.title">
+        <label>Описание: </label>
+        <input class="my-input" type="text" name="description" [(ngModel)]="filterIssue.description">
+        <label>Группа: </label>
+        <input class="my-input" type="text" name="description" [(ngModel)]="filterIssue.grouptitle">
+        <label>Статус: </label>
+        <select name="statuses" [(ngModel)]="filterIssue.status">
+          <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
+        </select>
+        <br>
+        <button name="filter" class="btn btn-primary" (click)="filter()">Найти</button>
+        <button name="filter" class="btn btn-primary" (click)="hideDone(true)">Скрыть выполненные</button>
+        <button name="filter" class="btn btn-primary" (click)="hideDone(false)">Показать выполненные</button>
+      </form>
+    </div>
+  </div>
+  <div>
     <h2 class="h-style">Мои задачи</h2>
     <table>
       <tr>
@@ -14,7 +37,7 @@
         <th>Группа</th>
         <th></th>
       </tr>
-      <tr *ngFor="let issue of allIssues">
+      <tr *ngFor="let issue of visibleIssues">
         <td>{{issue.issue_id}}</td>
         <td>{{issue.title}}</td>
         <td>{{issue.description}}</td>
