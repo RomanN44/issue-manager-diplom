@@ -10,9 +10,16 @@ import {RestapiService} from "../restapi.service";
 export class GroupComponent implements OnInit {
 
   allGroups: Group[] = []
+  createGroupRequest = {
+    title: null,
+    description: null,
+    userId: null
+  }
 
   constructor(private restapi: RestapiService) {
     this.getGroups()
+    // @ts-ignore
+    this.createGroupRequest.userId = localStorage.getItem('id')
   }
 
   ngOnInit(): void {
@@ -35,4 +42,12 @@ export class GroupComponent implements OnInit {
       return ""
     }
   }
+
+  createGroup() {
+    if (this.createGroupRequest.title !== null)
+      this.restapi.post('/group/createGroup', this.createGroupRequest)
+        .subscribe((data: any) => {
+          this.getGroups()
+        })
+    }
 }

@@ -1,6 +1,18 @@
 <title>Панель групп пользователя</title>
 <div class="p-container">
   <app-navigation></app-navigation>
+  <div class="card">
+    <h4 class="h-style">Создать группу</h4>
+    <form>
+      <label>Введите название группы: </label>
+      <input class="my-input" type="text" name="titleGroup" [(ngModel)] = "createGroupRequest.title">
+      <br>
+      <label>Введите описание группы: </label>
+      <textarea class="my-input" rows="10" cols="45" name="descriptionGroup" [(ngModel)] = "createGroupRequest.description"></textarea>
+      <br>
+      <button name="createGroup" class="btn btn-success" (click)="createGroup()">Создать</button>
+    </form>
+  </div>
   <div>
     <h2 class="h-style">Мои группы</h2>
     <table>

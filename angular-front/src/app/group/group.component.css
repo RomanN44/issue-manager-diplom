@@ -1,3 +1,15 @@
+.card {
+  border-bottom: 2px solid #6678b1;
+  border-top: 2px solid #6678b1;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 30%;
+  text-align: left;
+  margin: 45px;
+  margin-inside: 10px;
+  color: #669;
+}
 table {
   margin:auto;
   width:120%;
@@ -25,4 +37,46 @@ tr:hover td {
 .h-style {
   text-align-last: center;
   color: #669;
+}
+
+.my-input{
+  margin: 5px;
+}
+.btn {
+  display: inline-block;
+  font-weight: normal;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+}
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
 }

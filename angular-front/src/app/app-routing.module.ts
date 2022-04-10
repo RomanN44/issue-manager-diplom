@@ -6,6 +6,7 @@ import {IssueComponent} from "./issue/issue.component";
 import {GroupComponent} from "./group/group.component";
 import {AdminComponent} from "./admin/admin.component";
 import {ManageGroupComponent} from "./manage-group/manage-group.component";
+import {RegistrationComponent} from "./registration/registration.component";
 
 const routes: Routes = [
   {path:"",redirectTo:"login",pathMatch:"full"},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path:"group",component:GroupComponent},
   {path:"admin",component:AdminComponent},
   {path:"manage",component:ManageGroupComponent},
+  {path:"registration", component: RegistrationComponent}
 ];
 
 @NgModule({

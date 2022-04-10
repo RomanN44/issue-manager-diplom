@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { RestapiService } from '../restapi.service';
-import { Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {RestapiService} from '../restapi.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +12,10 @@ export class LoginComponent implements OnInit {
   id: Object = 0
   username: string = "";
   password: string = "";
-  message: any
 
-  constructor(private service: RestapiService,private router:Router) { }
+  constructor(private service: RestapiService,
+              private router: Router) {
+  }
 
   ngOnInit() {
   }
@@ -25,5 +26,9 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('id', String(res));
       this.router.navigate(["/home"])
     });
+  }
+
+  goToRegistration() {
+    this.router.navigate(["/registration"])
   }
 }

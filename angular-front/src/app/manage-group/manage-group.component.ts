@@ -59,6 +59,9 @@ export class ManageGroupComponent implements OnInit{
 
   deleteGroup() {
     this.restapi.get('/group/deleteGroup/' + this.id)
+      .subscribe((data: any) => {
+        this.router.navigate(["admin"]);
+      })
   }
 
   addMember() {

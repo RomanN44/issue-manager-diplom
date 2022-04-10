@@ -1,25 +1,44 @@
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 <title>Панель авторизации</title>
 <div class="container-login">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h3 class="panel-title">Авторизация</h3>
-    </div>
-    <div class="panel-body">
-      <form accept-charset="UTF-8" role="form">
-        <fieldset>
-          <div class="form-group">
-            <input class="form-control" placeholder="Логин" name="username" type="text" [(ngModel)]="username">
-          </div>
-          <div class="form-group">
-            <input class="form-control" placeholder="Пароль" name="password" type="password" value=""
-                   [(ngModel)]="password">
-          </div>
-          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Войти" (click)="doLogin()">
-        </fieldset>
-      </form>
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-header">Авторизация</div>
+        <div class="card-body">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="username" class="cols-sm-2 control-label">Логин</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" name="username" id="username" placeholder="Введите свой логин"
+                         [(ngModel)]="username"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="password" class="cols-sm-2 control-label">Пароль</label>
+              <div class="cols-sm-10">
+                <div class="input-group">
+                  <input type="password" class="form-control" name="password" id="password"
+                         placeholder="Введите свой пароль"
+                         [(ngModel)]="password"/>
+                </div>
+              </div>
+            </div>
+            <div class="form-group ">
+              <button type="button" class="btn btn-primary btn-lg btn-block login-button" (click)="doLogin()">Войти
+              </button>
+            </div>
+            <div class="login-register">
+              <button class="btn btn-secondary" (click)="goToRegistration()">Регистрация</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
