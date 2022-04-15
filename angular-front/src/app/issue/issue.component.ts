@@ -12,7 +12,7 @@ export class IssueComponent implements OnInit {
   allIssues: Issue[] = []
   visibleIssues: Issue[] = []
   filterIssue = {
-    issue_id: null,
+    issue_id: "",
     title: "",
     description: "",
     status: "",
@@ -86,6 +86,16 @@ export class IssueComponent implements OnInit {
       })
     } else {
       this.visibleIssues = this.allIssues
+    }
+  }
+
+  getStrByPriority(priority: number) {
+    switch (priority) {
+      case 1: return "Первый"
+      case 2: return "Второй"
+      case 3: return "Третий"
+      case 4: return "Четвертый"
+      default: return "Пятый"
     }
   }
 }

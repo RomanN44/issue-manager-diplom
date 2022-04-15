@@ -1,9 +1,11 @@
 package ru.issuemanager.service
 
-import org.springframework.http.ResponseEntity
+import mu.KotlinLogging
 import org.springframework.stereotype.Service
 import ru.issuemanager.dao.UserDao
 import ru.issuemanager.dto.RegistrationUserRequest
+
+private val logger = KotlinLogging.logger {}
 
 @Service
 class UserService(
@@ -12,12 +14,14 @@ class UserService(
     fun registration(request: RegistrationUserRequest) = try {
         userDao.insertUser(request)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
     fun getInfo(id: Long) = try {
         userDao.selectUserById(id)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
@@ -28,6 +32,7 @@ class UserService(
             null
         }
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 }

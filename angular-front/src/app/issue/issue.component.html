@@ -2,17 +2,17 @@
 <div class="p-container">
   <app-navigation></app-navigation>
   <div>
-    <div class="card">
+    <div class="filter">
       <h4 class="h-style">Фильтр задач</h4>
       <form>
         <label>ID: </label>
-        <input class="my-input" type="text" name="title" [(ngModel)]="filterIssue.issue_id">
+        <input class="my-input" type="text" name="issue_id" [(ngModel)]="filterIssue.issue_id">
         <label>Заголовок: </label>
         <input class="my-input" type="text" name="title" [(ngModel)]="filterIssue.title">
         <label>Описание: </label>
         <input class="my-input" type="text" name="description" [(ngModel)]="filterIssue.description">
         <label>Группа: </label>
-        <input class="my-input" type="text" name="description" [(ngModel)]="filterIssue.grouptitle">
+        <input class="my-input" type="text" name="grouptitle" [(ngModel)]="filterIssue.grouptitle">
         <label>Статус: </label>
         <select name="statuses" [(ngModel)]="filterIssue.status">
           <option *ngFor="let option of options" [ngValue]="option">{{option}}</option>
@@ -32,6 +32,7 @@
         <th>Заголовок</th>
         <th>Описание</th>
         <th>Статус</th>
+        <th>Приоритет</th>
         <th>Дата начала</th>
         <th>Дата конца</th>
         <th>Группа</th>
@@ -42,6 +43,7 @@
         <td>{{issue.title}}</td>
         <td>{{issue.description}}</td>
         <td>{{issue.status}}</td>
+        <td align="center">{{getStrByPriority(issue.priority)}}</td>
         <td>{{issue.date_start}}</td>
         <td>{{issue.date_finish}}</td>
         <td>{{issue.grouptitle}}</td>

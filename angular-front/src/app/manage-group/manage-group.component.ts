@@ -4,6 +4,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Group} from "../dto/Group";
 import {User} from "../dto/User";
 import {IssueGroup} from "../dto/IssueGroup";
+import {Report} from "../dto/Report";
+import {ExcelService} from "../excel.service";
 
 @Component({
   selector: 'app-manage-group',
@@ -23,15 +25,36 @@ export class ManageGroupComponent implements OnInit {
     groupId: null,
     title: null,
     description: null,
+    priority: null
   }
   assignIssueRequest = {
     userId: null,
     issueId: null,
     groupId: null
   }
+  filterIssue = {
+    issue_id: "",
+    title: "",
+    description: "",
+    status: "",
+    full_name: ""
+  }
+  optionsIssues: { title: string, id: number }[] = []
+  optionsMembers: { full_name: string, id: number }[] = []
+  options = ['', 'ToDo', 'InProgress', 'InTest', 'Done']
+  priorities = [
+    {title: 'Первый', value: 1},
+    {title: 'Второй', value: 2},
+    {title: 'Третий', value: 3},
+    {title: 'Четвертый', value: 4},
+    {title: 'Пятый', value: 5},
+  ]
   allIssues: IssueGroup[] = []
+  visibleIssues: IssueGroup[] = []
+  report: Report[] = []
 
   constructor(private restapi: RestapiService,
+              private excel: ExcelService,
               private router: Router,
               private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -57,8 +80,12 @@ export class ManageGroupComponent implements OnInit {
     this.restapi.get('/group/getMembersGroup/' + this.id)
       .subscribe((data: any) => {
           this.allMembers = []
+          this.optionsMembers = []
           let res = JSON.parse(data)
-          res.forEach((user: User) => this.allMembers.push(user))
+          res.forEach((user: User) => {
+            this.allMembers.push(user)
+            this.optionsMembers.push({full_name: user.full_name, id: user.user_id})
+          })
         }
       )
   }
@@ -87,6 +114,7 @@ export class ManageGroupComponent implements OnInit {
       this.restapi.post('/group/addMember', this.newMemberRequest)
         .subscribe((data: any) => {
           this.getMembers()
+          this.newMemberRequest.userId = null
         })
     }
   }
@@ -95,8 +123,15 @@ export class ManageGroupComponent implements OnInit {
     this.restapi.get('/issue/get/byGroup/' + this.id)
       .subscribe((data: any) => {
           this.allIssues = []
+          this.optionsIssues = []
           let res = JSON.parse(data)
-          res.forEach((issue: IssueGroup) => this.allIssues.push(issue))
+          res.forEach((issue: IssueGroup) => {
+            this.allIssues.push(issue)
+            if (issue.member_id === null) {
+              this.optionsIssues.push({title: issue.title, id: issue.issue_id})
+            }
+          })
+          this.visibleIssues = this.allIssues
         }
       )
   }
@@ -106,12 +141,15 @@ export class ManageGroupComponent implements OnInit {
       this.restapi.post('/issue/create', this.createIssueRequest)
         .subscribe((data: any) => {
           this.getIssues()
+          this.createIssueRequest.title = null
+          this.createIssueRequest.description = null
+          this.createIssueRequest.priority = null
         })
     }
   }
 
   checkMember(name: string | null) {
-    if(name === null) {
+    if (name === null) {
       return "Не назначено"
     } else {
       return name
@@ -125,5 +163,58 @@ export class ManageGroupComponent implements OnInit {
           this.getIssues()
         })
     }
+  }
+
+
+  filter() {
+    this.visibleIssues = []
+    this.allIssues.forEach((issue: IssueGroup) => {
+      if (this.findSubstr(issue.title, this.filterIssue.title) &&
+        this.findSubstr(issue.description, this.filterIssue.description) &&
+        this.findSubstr(issue.status, this.filterIssue.status) &&
+        this.findSubstr(issue.full_name, this.filterIssue.full_name) &&
+        this.findSubstr(String(issue.issue_id), String(this.filterIssue.issue_id))) {
+        this.visibleIssues.push(issue)
+      }
+    })
+  }
+
+  hideDone(flag: boolean) {
+    this.visibleIssues = []
+    if (flag) {
+      this.allIssues.forEach((issue: IssueGroup) => {
+        if (issue.status !== 'Done') {
+          this.visibleIssues.push(issue)
+        }
+      })
+    } else {
+      this.visibleIssues = this.allIssues
+    }
+  }
+
+  getReport() {
+    this.restapi.get('/group/getReport/' + this.id)
+      .subscribe((data: any) => {
+        this.report = []
+        let res = JSON.parse(data)
+        res.forEach((report: Report) => {
+          this.report.push(report)
+        })
+        this.excel.exportAsExcelFile(this.report, 'report')
+      })
+  }
+
+  getStrByPriority(priority: number) {
+    switch (priority) {
+      case 1: return "Первый"
+      case 2: return "Второй"
+      case 3: return "Третий"
+      case 4: return "Четвертый"
+      default: return "Пятый"
+    }
+  }
+
+  private findSubstr(str1: string, str2: string) {
+    return !str1.toLowerCase().indexOf(str2.toLowerCase())
   }
 }

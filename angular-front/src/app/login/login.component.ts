@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
     resp.subscribe(res => {
       localStorage.setItem('id', String(res));
       this.router.navigate(["/home"])
+    }, error => {
+      alert("Неверный логин или пароль!")
     });
   }
 

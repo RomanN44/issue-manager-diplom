@@ -10,13 +10,11 @@ import ru.issuemanager.service.GroupService
 
 private val logger = KotlinLogging.logger {}
 
-//+
 @RestController
 @CrossOrigin(origins = ["*"])
 class GroupController(
     private val groupService: GroupService
 ) {
-    //+
     @PostMapping("/group/createGroup")
     fun createGroup(@RequestBody request: CreateGroupRequest) = try {
         groupService.createGroup(request)
@@ -26,7 +24,6 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/group/deleteGroup/{id}")
     fun deleteGroup(@PathVariable id: Long) = try {
         groupService.deleteGroup(id)
@@ -36,7 +33,6 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/group/getGroup/{id}")
     fun getGroup(@PathVariable id: Long) = try {
         groupService.getGroup(id)
@@ -45,7 +41,6 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @PostMapping("/group/addMember")
     fun addMember(@RequestBody request: AddMemberRequest) = try {
         groupService.addMember(request)
@@ -55,7 +50,6 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/group/deleteMember/{groupId}/{userId}")
     fun deleteMember(@PathVariable groupId: Long, @PathVariable userId: Long) = try {
         groupService.deleteMember(groupId, userId)
@@ -65,7 +59,6 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/group/getMembersGroup/{id}")
     fun getMembersGroup(@PathVariable id: Long) = try {
         groupService.getMembersGroup(id)
@@ -74,10 +67,17 @@ class GroupController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/group/getGroupsByMember/{id}")
     fun getGroupsByMember(@PathVariable id: Long) = try {
         groupService.getGroupsByMember(id)
+    } catch (e: Exception) {
+        logger.error { e.message }
+        ResponseEntity<String>(HttpStatus.BAD_REQUEST)
+    }
+
+    @GetMapping("/group/getReport/{id}")
+    fun getReport(@PathVariable id: Long) = try {
+        groupService.sendReport(id)
     } catch (e: Exception) {
         logger.error { e.message }
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)

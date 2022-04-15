@@ -14,7 +14,6 @@ private val logger = KotlinLogging.logger {}
 class IssueController(
     private val issueService: IssueService
 ) {
-    //+
     @GetMapping("/issue/get/byUser/{userId}")
     fun getIssuesByUser(@PathVariable userId: Long) = try {
         issueService.getIssuesByUser(userId)
@@ -23,7 +22,6 @@ class IssueController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @GetMapping("/issue/get/byGroup/{groupId}")
     fun getIssuesByGroup(@PathVariable groupId: Long) = try {
         issueService.getIssueByGroup(groupId)
@@ -32,7 +30,6 @@ class IssueController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @PostMapping("/issue/changeStatus")
     fun changeStatusIssue(@RequestBody request: ChangeIssueStatusRequest) = try {
         issueService.changeStatusIssue(request)
@@ -42,7 +39,6 @@ class IssueController(
         ResponseEntity<String>(HttpStatus.BAD_REQUEST)
     }
 
-    //+
     @PostMapping("/issue/create")
     fun createIssue(@RequestBody request: CreateIssueRequest) = try {
         issueService.createIssue(request)

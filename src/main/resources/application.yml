@@ -7,3 +7,7 @@ spring:
     url: 'jdbc:postgresql://localhost:5432/issue-manager'
     username: 'postgres'
     password: '0000'
+
+mail:
+  from: 'issue-manager@mail.ru'
+  path: 'D:\Учёба\ДИПЛОМ\issue-manager\src\main\resources\tmp'

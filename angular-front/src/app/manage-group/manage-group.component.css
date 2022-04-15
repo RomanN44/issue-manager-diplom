@@ -10,6 +10,18 @@
   margin-inside: 10px;
   color: #669;
 }
+.filter {
+  border-bottom: 2px solid #6678b1;
+  border-top: 2px solid #6678b1;
+  height:100%;
+  font-size: 16px;
+  background: white;
+  max-width: 100%;
+  text-align: left;
+  margin: 45px;
+  margin-inside: 10px;
+  color: #669;
+}
 table {
   margin:auto;
   width:120%;
@@ -75,10 +87,22 @@ tr:hover td {
   background-color: #5cb85c;
   border-color: #5cb85c;
   margin-bottom: 10px;
+  margin-right: 10px;
   margin-top: 10px;
 }
 .main-border {
   border-top: 2px solid #6678b1;
   max-width: 100%;
+}
+.btn-primary  {
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
+select{
+  margin-bottom: 15px;
 }
 

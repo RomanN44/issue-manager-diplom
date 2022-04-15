@@ -1,8 +1,10 @@
 package ru.issuemanager.service
 
 import mu.KotlinLogging
+import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Service
 import ru.issuemanager.dao.GroupDao
+import ru.issuemanager.dao.IssueDao
 import ru.issuemanager.dao.MemberDao
 import ru.issuemanager.dao.UserDao
 import ru.issuemanager.dto.AddMemberRequest
@@ -14,8 +16,10 @@ private val logger = KotlinLogging.logger {}
 class GroupService(
     private val groupDao: GroupDao,
     private val memberDao: MemberDao,
-    private val userDao: UserDao
+    private val userDao: UserDao,
+    private val issueDao: IssueDao
 ) {
+
     fun createGroup(request: CreateGroupRequest) = try {
         groupDao.insertGroup(request)
     } catch (e: Exception) {
@@ -60,6 +64,13 @@ class GroupService(
 
     fun getGroupsByMember(id: Long) = try {
         groupDao.selectGroupsByMember(id)
+    } catch (e: Exception) {
+        logger.error { e.message }
+        null
+    }
+
+    fun sendReport(id: Long) = try {
+        issueDao.selectIssuesForReport(id)
     } catch (e: Exception) {
         logger.error { e.message }
         null

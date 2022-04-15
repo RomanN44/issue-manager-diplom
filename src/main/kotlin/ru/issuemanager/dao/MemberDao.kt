@@ -1,8 +1,11 @@
 package ru.issuemanager.dao
 
+import mu.KotlinLogging
 import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.stereotype.Repository
 import ru.issuemanager.dto.AddMemberRequest
+
+private val logger = KotlinLogging.logger {}
 
 @Repository
 class MemberDao(
@@ -14,6 +17,7 @@ class MemberDao(
                 " VALUES (${request.groupId}, ${request.userId});"
         jdbcTemplate.execute(sql)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
@@ -28,6 +32,7 @@ class MemberDao(
                 " where group_id = $groupId and user_id = $userId"
         jdbcTemplate.execute(deleteMember)
     } catch (e: Exception) {
+        logger.error { e.message }
         null
     }
 
